@@ -1,0 +1,49 @@
+<!doctype>
+<html>
+    <head>
+        <meta charset="utf8"/>
+        <title>RaspberryPi LED|树莓派小灯</title>
+        <link rel="stylesheet"  href="../css/index.css" type="text/css" />
+        <script src="../js/jquery.js"></script>
+    </head>
+    <body>
+        <div id="turnon">
+            <a flag="on" href="#turnon" class="lamp"></a>
+            <a flag="off" href="#turnoff" class="turnoff"></a>
+            <div class="string"></div>
+            <div class="bulb"></div>
+            <div class="light"></div>
+        </div>
+        <script>
+            $('#turnon a').click(function(){
+                var _=this;
+                var flag=$(_).attr("flag");
+                $(_).removeClass("current");
+                if( "on"==flag ){
+                    $.ajax({
+                        type:"post",
+                        url:"/api/detect",
+                        success:(res)=>{
+                            if(res.err){
+                                alert(res.err)
+                            }
+                            $(".turnoff").addClass("current");
+                            $(".lamp").css("display","none");
+                        }
+                    })
+                }else if("off"==flag){
+                    $.ajax({
+                        type:"post",
+                        url:"/api/detect",
+                        success:(res)=>{
+                            if(res.err){
+                                alert(res.err)
+                            }
+                            $(".lamp").css("display","block");
+                        }
+                    })
+                }
+            })
+        </script>
+    </body>
+</html>
