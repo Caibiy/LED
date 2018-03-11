@@ -13,7 +13,27 @@
             <div class="string"></div>
             <div class="bulb"></div>
             <div class="light"></div>
-        </div>
+	<pre class="girl">
+                       .::::.
+                     .::::::::.
+                    :::::::::::
+                 ..:::::::::::'
+              '::::::::::::'
+                .::::::::::
+           '::::::::::::::..
+                ..::::::::::::.
+              ``::::::::::::::::
+               ::::``:::::::::'        .:::.
+              ::::'   ':::::'       .::::::::.
+            .::::'      ::::     .:::::::'::::.
+           .:::'       :::::  .:::::::::' ':::::.
+          .::'        :::::.:::::::::'      ':::::.
+         .::'         ::::::::::::::'         ``::::.
+     ...:::           ::::::::::::'              ``::.
+    ```` ':.          ':::::::::'                  ::::..
+                       '.:::::'                    ':'````..
+       </pre>
+</div>
         <script>
             $('#turnon a').click(function(){
                 var _=this;
@@ -22,7 +42,7 @@
                 if( "on"==flag ){
                     $.ajax({
                         type:"post",
-                        url:"/api/detect",
+                        url:"/api/led",
                         success:(res)=>{
                             if(res.err){
                                 alert(res.err)
@@ -34,7 +54,7 @@
                 }else if("off"==flag){
                     $.ajax({
                         type:"post",
-                        url:"/api/detect",
+                        url:"/api/led",
                         success:(res)=>{
                             if(res.err){
                                 alert(res.err)
