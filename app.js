@@ -12,9 +12,7 @@ app.use(express.static(path.join(__dirname,'')))
 app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'./view/index.html'))
 })
-app.get('/api/detect',(req,res)=>{
-    res.json({data:"hi,you're handsome!"});
-})
+
 app.post('/api/led',(req,res)=>{
     exec('bash ./bash/led.sh',(err,stdout,stderr)=>{
         if(err){
