@@ -18,7 +18,9 @@ app.get('/',(req,res)=>{
 app.post('/api/led',(req,res)=>{
     res.json(led.status())
 })
-
+app.post('/api/detect',(req,res)=>{
+    res.json(led.detect())
+})
 //端口监听
 app.listen(port,()=>{
     console.log("Server run at:"+port);

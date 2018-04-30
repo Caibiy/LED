@@ -33,8 +33,21 @@
     ```` ':.          ':::::::::'                  ::::..
                        '.:::::'                    ':'````..
        </pre>
+      <p style="color:#fff">当前小灯状态:<span id="status"></span></p>
 </div>
         <script>
+          $(function(){
+            detect();
+          })
+          function detect(){
+            $.ajax({
+              type:"post",
+              url:"/api/detect",
+              success:(res)=>{
+                $("#status").text(res.status)
+              }
+            })
+          }
             $('#turnon a').click(function(){
                 var _=this;
                 var flag=$(_).attr("flag");
@@ -50,7 +63,8 @@
                             $(".turnoff").addClass("current");
                             $(".lamp").css("display","none");
                         }
-                    })
+                    });
+                    detect();
                 }else if("off"==flag){
                     $.ajax({
                         type:"post",
@@ -61,7 +75,8 @@
                             }
                             $(".lamp").css("display","block");
                         }
-                    })
+                    });
+                      detect();
                 }
             })
         </script>
