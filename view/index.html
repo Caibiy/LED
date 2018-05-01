@@ -46,9 +46,11 @@
               success:(res)=>{
                 $("#status").text(res.status)
                if("on"==res.status){
-                alert("on")   
+                    $(".turnoff").addClass("current");
+                            $(".lamp").css("display","none");  
                 }else{
                   alert("off")
+			$(".lamp").css("display","block");
                   }
              }
             })
@@ -57,7 +59,6 @@
                 var _=this;
                 var flag=$(_).attr("flag");
                 $(_).removeClass("current");
-                if( "on"==flag ){
                     $.ajax({
                         type:"post",
                         url:"/api/led",
@@ -65,24 +66,10 @@
                             if(res.err){
                                 alert(res.err)
                             }
-                            $(".turnoff").addClass("current");
-                            $(".lamp").css("display","none");
-                        }
-                    });
-                    detect();
-                }else if("off"==flag){
-                    $.ajax({
-                        type:"post",
-                        url:"/api/led",
-                        success:(res)=>{
-                            if(res.err){
-                                alert(res.err)
-                            }
-                            $(".lamp").css("display","block");
+                            //$(".lamp").css("display","block");
                         }
                     });
                       detect();
-                }
             })
         </script>
     </body>
