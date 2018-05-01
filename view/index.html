@@ -45,7 +45,12 @@
               url:"/api/detect",
               success:(res)=>{
                 $("#status").text(res.status)
-              }
+               if("on"==res.status){
+                alert("on")   
+                }else{
+                  alert("off")
+                  }
+             }
             })
           }
             $('#turnon a').click(function(){
